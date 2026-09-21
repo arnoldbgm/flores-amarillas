@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Flores amarillas para Ailen</title>
+
+<!--
+  ============================================================
+   CARTA PARA Ailen  ·  archivo único, autosuficiente
+   La canción va incrustada aquí dentro: no necesitas ningún
+   archivo al lado, ni internet, ni YouTube.
+
+   PARA CAMBIAR EL MENSAJE  ->  busca:  TU CARTA AQUI
+   PARA CAMBIAR EL NOMBRE   ->  busca:  Ailen
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --papel-carta:  #fffdf6;
+    --sobre-luz:    #fbeed6;
+    --sobre-sombra: #ecd7b0;
+    --tinta:        #4c3c27;
+    --tinta-suave:  #857053;
+    --sepia:        #b08d52;
+    --oro:          #c8961f;
+    --oro-claro:    #f0c75a;
+    --lacre:        #9e2f4c;
+    --lacre-alto:   #c4536e;
+    --lacre-texto:  #ffe4ea;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    display:flex;align-items:center;justify-content:center;
+    padding:0 16px;
+    overflow:hidden;position:relative;
+    background:radial-gradient(ellipse 120% 90% at 50% 28%, #fdf7e9 0%, #f4e7cd 46%, #e6d2ae 100%);
+    color:var(--tinta);
+    font-family:'Outfit','Segoe UI',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-user-select:none;user-select:none;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:
+      radial-gradient(circle at 18% 22%, rgba(150,118,70,.05) 0 1px, transparent 1px),
+      radial-gradient(circle at 72% 64%, rgba(150,118,70,.045) 0 1px, transparent 1px),
+      radial-gradient(circle at 44% 86%, rgba(150,118,70,.04) 0 1px, transparent 1px);
+    background-size:7px 7px, 11px 11px, 13px 13px;
+  }
+
+  /* ---------------- EL SOBRE ---------------- */
+  .escena{perspective:1400px;z-index:5;transition:transform 1.05s cubic-bezier(.5,0,.3,1),opacity .85s ease}
+  .escena.fuera{transform:translateY(140px) scale(.7);opacity:0;pointer-events:none}
+
+  .sobre{
+    position:relative;width:min(336px,82vw);aspect-ratio:1.52/1;
+    transform-style:preserve-3d;cursor:pointer;border:0;padding:0;background:none;
+    filter:drop-shadow(0 20px 38px rgba(138,102,55,.3));
+    animation:respirar 3.6s ease-in-out infinite;
+  }
+  @keyframes respirar{
+    0%,100%{transform:translateY(0) rotate(-.55deg)}
+    50%    {transform:translateY(-9px) rotate(.55deg)}
+  }
+  .sobre:focus-visible{outline:2px solid var(--oro);outline-offset:10px;border-radius:12px}
+
+  .s-fondo{position:absolute;inset:0;border-radius:9px;
+    background:linear-gradient(148deg,var(--sobre-luz),var(--sobre-sombra))}
+  .s-frente{position:absolute;inset:0;border-radius:9px;z-index:6;
+    background:linear-gradient(162deg,var(--sobre-luz),#eedcba);
+    -webkit-clip-path:polygon(0 10%,50% 60%,100% 10%,100% 100%,0 100%);
+    clip-path:polygon(0 10%,50% 60%,100% 10%,100% 100%,0 100%)}
+  .s-frente::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(to bottom,rgba(150,112,60,.13),rgba(150,112,60,0) 38%);
+    -webkit-clip-path:polygon(0 10%,50% 60%,100% 10%,100% 100%,0 100%);
+    clip-path:polygon(0 10%,50% 60%,100% 10%,100% 100%,0 100%)}
+  .s-solapa{
+    position:absolute;top:0;left:0;width:100%;height:62%;z-index:8;
+    background:linear-gradient(176deg,#f9ebd0,#e9d5ab);
+    -webkit-clip-path:polygon(0 0,100% 0,50% 100%);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top center;transform:rotateX(0deg);
+    transition:transform .95s cubic-bezier(.5,-.14,.35,1.1);
+    backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  }
+  .s-solapa.abierta{transform:rotateX(178deg)}
+  .s-sombra{position:absolute;top:0;left:0;width:100%;height:62%;z-index:7;
+    -webkit-clip-path:polygon(0 0,100% 0,50% 100%);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    background:rgba(120,88,46,.17);opacity:0;transition:opacity .45s .48s ease}
+  .s-sombra.on{opacity:1}
+
+  .lacre{
+    position:absolute;left:50%;top:53%;transform:translate(-50%,-50%);
+    width:80px;height:80px;border-radius:50%;z-index:10;
+    background:radial-gradient(circle at 34% 28%,var(--lacre-alto),var(--lacre) 62%,#7d2039);
+    box-shadow:0 5px 15px rgba(108,28,54,.44),
+               inset 0 -3px 9px rgba(60,10,25,.32),
+               inset 0 3px 7px rgba(255,255,255,.22);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:var(--lacre-texto);font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;line-height:1.02;
+    transition:transform .7s cubic-bezier(.4,1.55,.6,1),opacity .55s ease;
+  }
+  .lacre::before{content:"";position:absolute;inset:6px;border-radius:50%;
+    border:1px solid rgba(255,220,230,.34)}
+  .lacre .l-chico{font-size:9.5px;letter-spacing:2.6px;opacity:.82;text-transform:uppercase}
+  .lacre .l-nombre{font-size:21px;font-weight:600;letter-spacing:.5px}
+  .lacre.roto{transform:translate(-50%,130px) rotate(40deg) scale(.82);opacity:0}
+
+  .pista{
+    position:absolute;left:50%;bottom:-54px;transform:translateX(-50%);
+    white-space:nowrap;color:var(--sepia);font-size:12.5px;font-weight:600;
+    letter-spacing:2.4px;text-transform:uppercase;
+    animation:latir 2.3s ease-in-out infinite;transition:opacity .4s ease;
+  }
+  @keyframes latir{0%,100%{opacity:.42}50%{opacity:1}}
+  .pista.oculta{opacity:0}
+
+  /* ---------------- LA CARTA ---------------- */
+  .carta{
+    position:fixed;left:50%;top:50%;z-index:12;
+    width:min(300px,78vw);max-height:76vh;overflow-y:auto;
+    -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    transform:translate(-50%,-16%) scale(.58);opacity:0;pointer-events:none;
+    background:
+      repeating-linear-gradient(0deg,rgba(176,141,82,.055) 0 26px,rgba(0,0,0,0) 26px 27px),
+      linear-gradient(166deg,var(--papel-carta),#fdf4e2);
+    border-radius:5px;
+    padding:clamp(26px,6vw,44px) clamp(22px,5.5vw,42px);
+    box-shadow:0 28px 64px rgba(126,94,50,.32),0 0 0 1px rgba(196,164,112,.28);
+    text-align:center;-webkit-user-select:text;user-select:text;
+    transition:transform 1.15s cubic-bezier(.3,1.08,.4,1),opacity .85s ease,width 1.15s ease;
+  }
+  .carta.arriba{
+    transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto;
+    width:min(496px,88vw);
+  }
+  .carta::-webkit-scrollbar{width:5px}
+  .carta::-webkit-scrollbar-thumb{background:rgba(176,141,82,.42);border-radius:9px}
+
+  .fecha{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-style:italic;
+    color:var(--sepia);font-size:12.5px;letter-spacing:3.4px;text-transform:uppercase}
+  .titulo{font-family:'Caveat','Segoe Script','Bradley Hand',cursive;
+    font-size:clamp(29px,7.2vw,42px);color:#8d5f2c;line-height:1.1;
+    margin:6px 0 0;font-weight:600;text-wrap:balance}
+  .filete{width:60px;height:1px;margin:17px auto 22px;
+    background:linear-gradient(90deg,rgba(208,171,106,0),var(--sepia),rgba(208,171,106,0))}
+
+  .polaroid{
+    width:min(228px,64%);margin:0 auto 24px;border-radius:4px;overflow:hidden;
+    background:#fffef9;padding:9px 9px 32px;transform:rotate(-2.3deg);
+    box-shadow:0 10px 24px rgba(138,106,56,.26);
+  }
+  .polaroid svg,.polaroid img{display:block;width:100%;max-width:100%;height:auto;border-radius:2px}
+
+  .carta p{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    font-size:clamp(16.5px,4.2vw,19.5px);line-height:1.8;color:#5d4a31;margin:0 0 15px}
+  .carta p:last-of-type{margin-bottom:0}
+  .firma{font-family:'Caveat','Segoe Script','Bradley Hand',cursive;
+    font-size:clamp(24px,5.6vw,30px);color:#a06a2e;margin-top:26px;transform:rotate(-1.4deg)}
+
+  .cerrar{
+    margin-top:26px;border:0;border-bottom:1px solid rgba(176,141,82,.42);
+    cursor:pointer;font-family:'Outfit',system-ui,sans-serif;background:none;color:var(--sepia);
+    font-size:11.5px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;padding:7px 3px;
+  }
+  .cerrar:hover{color:var(--tinta)}
+  .cerrar:focus-visible{outline:2px solid var(--oro);outline-offset:4px}
+
+  /* ---------------- PÉTALOS ---------------- */
+  .petalo{position:fixed;z-index:9;pointer-events:none;
+    border-radius:50% 50% 50% 50%/62% 62% 38% 38%}
+  @keyframes estallar{
+    0%  {transform:translate(-50%,-50%) scale(.2) rotate(0);opacity:1}
+    100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1) rotate(var(--r));opacity:0}
+  }
+  @keyframes caer{
+    0%  {transform:translateY(-10vh) translateX(0) rotate(0);opacity:0}
+    12% {opacity:.9}
+    100%{transform:translateY(112vh) translateX(var(--dx)) rotate(740deg);opacity:0}
+  }
+
+  /* ---------------- REPRODUCTOR ---------------- */
+  .musica{
+    position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom, 0px));
+    transform:translateX(-50%) translateY(22px);
+    z-index:14;display:flex;align-items:center;gap:11px;
+    background:rgba(255,252,243,.9);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border:1px solid rgba(196,164,112,.34);border-radius:999px;
+    padding:7px 18px 7px 8px;box-shadow:0 7px 22px rgba(138,106,56,.2);
+    opacity:0;pointer-events:none;transition:opacity .75s ease,transform .75s ease;
+    max-width:calc(100vw - 32px);
+  }
+  .musica.visible{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+
+  .play{
+    width:33px;height:33px;border-radius:50%;border:0;cursor:pointer;flex:none;
+    background:linear-gradient(135deg,var(--oro-claro),#dca82c);color:#6b4d0c;
+    font-size:12px;line-height:1;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 8px rgba(200,150,31,.42);
+  }
+  .play:focus-visible{outline:2px solid var(--lacre);outline-offset:3px}
+  .play.llamando{animation:llamar 1.6s ease-in-out infinite}
+  @keyframes llamar{
+    0%,100%{box-shadow:0 3px 8px rgba(200,150,31,.42)}
+    50%    {box-shadow:0 3px 8px rgba(200,150,31,.42),0 0 0 9px rgba(200,150,31,.14)}
+  }
+
+  .barras{display:flex;gap:2.5px;align-items:flex-end;height:14px;flex:none}
+  .barras i{width:2.5px;background:var(--oro);border-radius:2px;height:4px;
+    animation:eq .9s ease-in-out infinite;animation-play-state:paused}
+  .barras.on i{animation-play-state:running}
+  .barras i:nth-child(2){animation-delay:.18s}
+  .barras i:nth-child(3){animation-delay:.36s}
+  .barras i:nth-child(4){animation-delay:.54s}
+  @keyframes eq{0%,100%{height:4px}50%{height:14px}}
+
+  .rotulo{line-height:1.25;text-align:left;min-width:0}
+  .rotulo b{display:block;font-size:12.5px;color:#7a5f36;font-weight:600;letter-spacing:.2px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rotulo small{font-size:10.5px;color:var(--tinta-suave);letter-spacing:.3px}
+
+  @media (prefers-reduced-motion: reduce){
+    .sobre,.pista,.play.llamando{animation:none}
+    .pista{opacity:.8}
+    .petalo{display:none}
+    .barras i{animation:none;height:9px}
+  }
+</style>
+</head>
+<body>
+
+<div class="escena" id="escena">
+  <button class="sobre" id="sobre" aria-label="Abrir el sobre" aria-expanded="false">
+    <span class="s-fondo"></span>
+    <span class="s-sombra" id="sSombra"></span>
+    <span class="s-frente"></span>
+    <span class="s-solapa" id="sSolapa"></span>
+    <span class="lacre" id="lacre">
+      <span class="l-chico">Para</span>
+      <span class="l-nombre">Ailen</span>
+    </span>
+    <span class="pista" id="pista">Toca el sobre</span>
+  </button>
+</div>
+
+<article class="carta" id="carta">
+  <div class="fecha">20 de septiembre</div>
+  <h1 class="titulo">Flores amarillas para ti</h1>
+  <div class="filete"></div>
+
+  <!-- Para poner una foto real, reemplaza todo el <svg>...</svg> por
+       <img src="data:image/jpeg;base64,....."> o pídemelo y yo la incrusto. -->
+  <div class="polaroid">
+    <svg viewBox="0 0 200 172" role="img" aria-label="Un ramo de flores amarillas">
+      <rect x="0" y="0" width="200" height="172" fill="#fbf4e4"/>
+      <g stroke="#6fae68" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M100 160 C 96 120, 70 96, 58 66"/>
+        <path d="M100 160 C 100 118, 100 92, 100 54"/>
+        <path d="M100 160 C 104 120, 130 96, 143 68"/>
+        <path d="M100 160 C 98 128, 84 104, 76 88"/>
+        <path d="M100 160 C 102 128, 118 104, 126 86"/>
+      </g>
+      <path d="M100 128 C 78 118, 70 130, 84 138 C 94 142, 100 136, 100 128Z" fill="#7cbb74"/>
+      <path d="M100 118 C 122 108, 130 120, 116 128 C 106 132, 100 126, 100 118Z" fill="#8cc783"/>
+      <g id="ramo"></g>
+      <path d="M62 150 C 80 143, 120 143, 138 150 L 132 170 L 68 170 Z" fill="#e8dcc0"/>
+      <path d="M62 150 C 80 143, 120 143, 138 150 L 136 156 L 64 156 Z" fill="#dccdaa"/>
+    </svg>
+  </div>
+
+  <!-- ==================== TU CARTA AQUI ==================== -->
+  <p>Ailen:</p>
+  <p>Dicen que las flores amarillas se regalan hoy, pero yo creo que tú las mereces todos los días del año. Como no te las puedo dejar en la puerta, te las mando así: dibujadas, sonando y hechas de todo lo que pienso cuando pienso en ti.</p>
+  <p>Gracias por tu risa fácil, por tu manera de iluminar hasta los días grises y por ser exactamente quien eres, sin pedir permiso.</p>
+  <p>Que nunca te falten motivos para sonreír.</p>
+  <!-- ================== FIN DE TU CARTA ==================== -->
+
+  <div class="firma">Con cariño 💛</div>
+  <button class="cerrar" id="cerrar">Cerrar la carta</button>
+</article>
+
+<div class="musica" id="musica">
+  <button class="play" id="play" aria-label="Pausar la música">&#10074;&#10074;</button>
+  <span class="barras on" id="barras" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  <span class="rotulo"><b>Flores Amarillas</b><small id="rotSub">Floricienta</small></span>
+</div>
+
+<audio id="cancion" loop preload="auto" src=""></audio>
+
+<script>
+(function(){
+  function $(id){ return document.getElementById(id); }
+  var sobre=$('sobre'), solapa=$('sSolapa'), sombra=$('sSombra'), lacre=$('lacre'),
+      pista=$('pista'), escena=$('escena'), carta=$('carta'), cerrar=$('cerrar'),
+      musica=$('musica'), play=$('play'), barras=$('barras'), rotSub=$('rotSub'),
+      cancion=$('cancion');
+
+  var AMARILLOS=['#FFD93D','#FFC93C','#FFE066','#FFD200','#FFDE59','#FFCB2B','#FFE894'];
+  var suave = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function elige(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function entre(a,b){ return a + Math.random()*(b-a); }
+
+  /* ---- el ramo del polaroid, dibujado con código ---- */
+  (function(){
+    var g=$('ramo'), out='', flores=[
+      {x:58, y:66, r:15, n:7, p:'#FFD53D', c:'#EE9F22'},
+      {x:143,y:68, r:14, n:7, p:'#FFCE2E', c:'#E89518'},
+      {x:76, y:88, r:12, n:6, p:'#FFDD5C', c:'#EFA324'},
+      {x:126,y:86, r:12, n:6, p:'#FFD93D', c:'#EFA324'},
+      {x:100,y:54, r:17, n:7, p:'#FFE066', c:'#F0A824'}
+    ];
+    for(var k=0;k<flores.length;k++){
+      var f=flores[k], petalos='';
+      for(var i=0;i<f.n;i++){
+        petalos += '<ellipse cx="0" cy="'+(-f.r)+'" rx="'+(f.r*0.46).toFixed(1)+'" ry="'+f.r+
+                   '" fill="'+f.p+'" transform="rotate('+((360/f.n)*i).toFixed(1)+')"/>';
+      }
+      out += '<g transform="translate('+f.x+','+f.y+')">'+petalos+
+             '<circle r="'+(f.r*0.45).toFixed(1)+'" fill="'+f.c+'"/></g>';
+    }
+    g.innerHTML = out;
+  })();
+
+  /* ---- abrir el sobre ---- */
+  var abierto=false;
+  sobre.addEventListener('click', abrir);
+  function abrir(){
+    if(abierto) return; abierto=true;
+    pista.classList.add('oculta');
+    lacre.classList.add('roto');
+    sobre.setAttribute('aria-expanded','true');
+    sonar();                       // el toque del dedo autoriza el audio
+    setTimeout(function(){ solapa.classList.add('abierta'); sombra.classList.add('on'); }, 170);
+    setTimeout(estallido, 600);
+    setTimeout(function(){ carta.classList.add('arriba'); escena.classList.add('fuera'); }, 880);
+    setTimeout(function(){ musica.classList.add('visible'); }, 980);
+    setTimeout(lluvia, 1400);
+  }
+
+  cerrar.addEventListener('click', function(){
+    carta.classList.remove('arriba');
+    escena.classList.remove('fuera');
+    solapa.classList.remove('abierta'); sombra.classList.remove('on');
+    lacre.classList.remove('roto'); pista.classList.remove('oculta');
+    sobre.setAttribute('aria-expanded','false');
+    abierto=false;
+  });
+
+  /* ---- pétalos ---- */
+  function petalo(t){
+    var p=document.createElement('span');
+    p.className='petalo';
+    p.style.width=t+'px'; p.style.height=(t*1.62)+'px';
+    p.style.background=elige(AMARILLOS);
+    p.style.boxShadow='inset -1px -2px 3px rgba(186,136,18,.26)';
+    return p;
+  }
+  function estallido(){
+    if(suave) return;
+    var r=sobre.getBoundingClientRect(),
+        cx=r.left+r.width/2, cy=r.top+r.height/2,
+        lejos=Math.max(window.innerWidth,window.innerHeight)*0.72;
+    for(var i=0;i<54;i++){
+      var p=petalo(entre(9,19)), a=entre(0,Math.PI*2), d=entre(140,lejos);
+      p.style.left=cx+'px'; p.style.top=cy+'px';
+      p.style.setProperty('--x',(Math.cos(a)*d).toFixed(0)+'px');
+      p.style.setProperty('--y',(Math.sin(a)*d-entre(20,110)).toFixed(0)+'px');
+      p.style.setProperty('--r',entre(-720,720).toFixed(0)+'deg');
+      p.style.animation='estallar '+entre(1.5,2.6).toFixed(2)+'s cubic-bezier(.12,.7,.3,1) '+
+                        entre(0,.35).toFixed(2)+'s forwards';
+      document.body.appendChild(p);
+      (function(el){ setTimeout(function(){ el.parentNode && el.parentNode.removeChild(el); }, 3200); })(p);
+    }
+  }
+  function lluvia(){
+    if(suave) return;
+    for(var i=0;i<32;i++){
+      var p=petalo(entre(8,16));
+      p.style.left=entre(-3,100)+'vw'; p.style.top='0';
+      p.style.setProperty('--dx',entre(-90,90).toFixed(0)+'px');
+      p.style.animation='caer '+entre(8,15).toFixed(1)+'s linear '+entre(0,9).toFixed(1)+'s infinite';
+      document.body.appendChild(p);
+    }
+  }
+
+  /* ---------------- MÚSICA ---------------- */
+  function marcar(v){
+    play.innerHTML = v ? '&#10074;&#10074;' : '&#9654;';
+    play.setAttribute('aria-label', v ? 'Pausar la música' : 'Poner la música');
+    barras.classList.toggle('on', v);
+    play.classList.toggle('llamando', !v);
+    rotSub.textContent = v ? 'Floricienta' : 'toca para escuchar';
+  }
+
+  function sonar(){
+    cancion.volume = 0.9;
+    var intento = cancion.play();
+    if(intento && intento.then){
+      intento.then(function(){ marcar(true); })
+             .catch(function(){ marcar(false); });   // el navegador lo frenó: que ella toque ▶
+    }else{
+      marcar(true);
+    }
+  }
+
+  play.addEventListener('click', function(){
+    if(cancion.paused){ sonar(); }
+    else{ cancion.pause(); marcar(false); }
+  });
+
+  cancion.addEventListener('play',  function(){ marcar(true); });
+  cancion.addEventListener('pause', function(){ marcar(false); });
+})();
+</script>
+</body>
+</html>
